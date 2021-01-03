@@ -1,0 +1,72 @@
+﻿@model MVCTest.Models.RegisterModel
+@{
+    ViewBag.Title = "registerIndex";
+    //int[] Month = new int[12];
+    //for (int i = 0; i < 12; i++)
+    //{
+    //    Month[i] = i;
+    //}
+    IDictionary<int, string> months = new Dictionary<int, string>
+{
+        {1,"一" },
+        {2,"二" },
+        {3,"三" },
+        {4,"四" },
+    };
+}
+<h2>注册 register index</h2>
+@*@Html.Partial("_User", Model.InvitedBy, new ViewDataDictionary { { "level", 3 } })
+    @Html.Action("_user", "Shared", new { level = 3 })*@
+@*@Html.EditorFor(m => m.InvitedBy, "_InvitedBy")*@
+@using (Html.BeginForm())
+{
+
+    @*@Html.EditorFor(m => m.InvitedBy, "_InvitedBy ")*@
+
+
+    <label>邀请人：</label>
+    @Html.TextBoxFor(m => m.InvitedBy, new { style = "color:green" })
+    <br />
+    <label>用户：</label>
+    @Html.TextBoxFor(m => m.Name, new { style = "color:green" })
+    @Html.ValidationMessageFor(m => m.Name)
+    <br />
+    <label>密码：</label>
+    @Html.PasswordFor(m => m.Password)
+    <br />
+    <label>确认密码：</label>
+    @Html.PasswordFor(m => m.ComfirmPassword)
+    <br />
+
+
+    @*<label>@Html.LabelFor(m => m.IsMale)</label>
+        <label>@Html.RadioButtonFor(m => m.IsMale, true) 男</label>
+        <label>@Html.RadioButtonFor(m => m.IsMale, false) 女</label>*@
+
+    @*<label>休息日</label>
+        <label >
+            @for (int i = 0; i < Model.RestDay.Count; i++)
+            {
+            <label>
+                @Html.CheckBoxFor(m => m.RestDay[i].Selected)
+
+            </label>
+
+            }
+        </label>*@
+
+
+
+    @*<label>
+            @Html.DropDownListFor(m=>m.BirthMonth,new SelectList( Month))
+            @Html.DropDownListFor(m => m.BirthMonth, new SelectList(months, "key","value"))
+            @Html.DropDownListFor(m => m.BirthMonth, new SelectList(Model.Keywords,"Id","Text",2,"-----"))
+        </label>*@
+
+
+    @*<label>
+            @Html.EnumDropDownListFor(m => m.Hobby)
+        </label>*@
+
+    <button type="submit">提交 </button>
+}
